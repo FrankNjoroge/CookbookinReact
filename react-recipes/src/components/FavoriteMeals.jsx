@@ -3,7 +3,7 @@ import { FaCircleXmark } from "react-icons/fa6";
 
 const FavoriteMeals = () => {
   return (
-    <div className="fav-Container">
+    <div className="fav-container">
       <h3>Favourite meals</h3>
       <ul className="fav-meals">
         <li>
