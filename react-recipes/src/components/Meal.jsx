@@ -7,6 +7,18 @@ const Meal = ({ meal, random }) => {
   function handleisLiked() {
     const newLikedState = !isLiked;
     setisLiked(newLikedState);
+
+    const favMeals = JSON.parse(localStorage.getItem("favMeals")) || [];
+
+    if (newLikedState) {
+      favMeals.push(meal);
+      localStorage.setItem("favMeals", JSON.stringify(favMeals));
+    } else {
+      const updatedFavMeals = favMeals.filter(
+        (fav) => fav.idMeal !== meal.idMeal
+      );
+      localStorage.setItem("favMeals", JSON.stringify(updatedFavMeals));
+    }
   }
 
   return (
