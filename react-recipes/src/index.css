@@ -217,3 +217,7 @@ header button {
 .not-show {
   display: none;
 }
+
+.loader {
+  margin: 3rem auto;
+}
