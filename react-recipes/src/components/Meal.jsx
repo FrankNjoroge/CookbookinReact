@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa6";
 
 const Meal = ({ meal, random }) => {
+  const [isLiked, setisLiked] = useState(false);
+
+  function handleisLiked() {
+    const newLikedState = !isLiked;
+    setisLiked(newLikedState);
+  }
+
   return (
     <div className="meals">
       <div className="meal">
@@ -12,8 +19,10 @@ const Meal = ({ meal, random }) => {
         <div className="meal-body">
           <h4>{meal.strMeal}</h4>
           <button className="fav-btn">
-            {/* <i className="fas fa-heart"></i> */}
-            <FaHeart />
+            <FaHeart
+              onClick={handleisLiked}
+              style={{ color: isLiked ? "red" : "" }}
+            />
           </button>
         </div>
       </div>
