@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const SearchBar = () => {
+const SearchBar = ({ handleSubmit }) => {
+  const [input, setInput] = useState(null);
   return (
     <header>
-      <input type="text" id="search-input" />
-      <button id="search">
-        {/* <i class="fa-solid fa-magnifying-glass"></i> */}
+      <input
+        type="text"
+        id="search-input"
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button id="search" onClick={() => handleSubmit(input)}>
         <FaMagnifyingGlass />
       </button>
     </header>

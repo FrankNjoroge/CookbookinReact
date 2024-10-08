@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FavoriteMeal from "./FavoriteMeal";
 
 const FavoriteMealsList = ({ favMeals, toggleFavorites }) => {

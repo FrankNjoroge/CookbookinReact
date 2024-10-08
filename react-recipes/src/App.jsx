@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Meal from "./components/Meal";
 import MainLayout from "./layout/MainLayout";
 import { HashLoader } from "react-spinners";
+import SearchedMealsList from "./components/SearchedMealsList";
 
 function App() {
   const [randomMeal, setRandomMeal] = useState(null);
@@ -45,9 +46,20 @@ function App() {
     setFavMeals(updatedFavMeals);
     localStorage.setItem("favMeals", JSON.stringify(updatedFavMeals));
   }
+
+  //handle fetch meals on search
+  const [searchedMeals, setSearchedMeals] = useState([]);
+
+  async function handleSubmit(term) {
+    const res = await fetch(
+      "https://www.themealdb.com/api/json/v1/1/search.php?s=" + term
+    );
+    const data = await res.json();
+    setSearchedMeals(data.meals);
+  }
   return (
     <MainLayout>
-      <SearchBar />
+      <SearchBar handleSubmit={handleSubmit} />
       <FavoriteMealsList
         favMeals={favMeals}
         toggleFavorites={toggleFavorites}
@@ -57,11 +69,16 @@ function App() {
       ) : (
         <Meal
           isRandom={true}
-          randomMeal={randomMeal}
+          meal={randomMeal}
           favMeals={favMeals}
           toggleFavorites={toggleFavorites}
         />
       )}
+      <SearchedMealsList
+        searchedMeals={searchedMeals}
+        favMeals={favMeals}
+        toggleFavorites={toggleFavorites}
+      />
     </MainLayout>
   );
 }

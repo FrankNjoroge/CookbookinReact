@@ -1,13 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { FaHeart } from "react-icons/fa6";
 
-const Meal = ({ randomMeal: meal, isRandom, favMeals, toggleFavorites }) => {
-  const [isLiked, setisLiked] = useState(false);
-  useEffect(() => {
-    //check if meal has been liked before
-    const mealIsLiked = favMeals.some((fav) => fav.idMeal === meal.idMeal);
-    setisLiked(mealIsLiked);
-  }, [favMeals]);
+const Meal = ({ meal, isRandom, favMeals, toggleFavorites }) => {
+  const isLiked = favMeals.some((fav) => fav.idMeal === meal.idMeal);
   return (
     <div className="meals">
       <div className="meal">
