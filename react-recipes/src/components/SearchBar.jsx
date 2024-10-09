@@ -10,6 +10,7 @@ const SearchBar = ({ handleSubmit }) => {
         id="search-input"
         onChange={(e) => setInput(e.target.value)}
         autoComplete="off"
+        placeholder="Enter a dish to search"
       />
       <button id="search" onClick={() => handleSubmit(input)}>
         <FaMagnifyingGlass />
