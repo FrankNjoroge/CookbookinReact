@@ -9,6 +9,7 @@ const SearchBar = ({ handleSubmit }) => {
         type="text"
         id="search-input"
         onChange={(e) => setInput(e.target.value)}
+        autoComplete="off"
       />
       <button id="search" onClick={() => handleSubmit(input)}>
         <FaMagnifyingGlass />
